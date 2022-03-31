@@ -3,31 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">\
+    <link rel="stylesheet" href="/css/styles.css">
     <title>Document</title>
 </head>
 <body>
-   <% if(day==="thursday"){ %>
 
-        <h1 style="color:red">it's <%= day %></h1>
-    <% }else { %>
+    <div class="box" id="heading">
+     
+            <h1 > <%= day %></h1>
+       
+    </div>
+  
 
-        <h1 style="color:purple">it's <%= day %></h1>
-    <% } %> 
-
-    <ul>
-        <li>eat</li>
-        <li>sleep</li>
-        <li>repete</li>
+    <div class="box">
+        <div class="items">
+        <%  for (let i = 0; i < work.length; i++) { %>
+          <form action="/delete" method="post">
+            <p>   <input  type="checkbox" name="checkbox"  value="<%= work[i]._id %>" autocomplete="off" onchange="this.form.submit()"> <%= work[i].name %></p>
+            <hr>
+          <input type="hidden" name="ListName"  value="<%= day %>">  
         
-      <% var items = <%=items%>; %>
-    <%   for (let i = 0; i < items.length; i++) { %>
-            <li><%= items[i] %></li>
+        </form>  
         <%  }%>
-    </ul>
-    <form action="/" method="POST">
-        <input type="text" name="text1" placeholder="enter text">
-        <button type="submit"> fucking click me</button>    
-    </form>
+        </div>
+        <form class="box" action="/" method="POST">
+            <input type="text" name="text1" placeholder="enter text"  autocomplete="off">
+            <button type="submit" name="btn" value="<%= day %>">+</button>    
+        </form>
+
+    </div>
+    
+   
 </body>
 </html>
